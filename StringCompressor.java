@@ -7,14 +7,14 @@ public class Main {
     public static String compressString(String string){
 
         // If the input string is empty the method returns an empty result
-        if(string.isEmpty())
+        if(string.isEmpty()||string == null)
         {
             return "";
         }
 
         // Using StringBuilder variable instead of String,
         // because String can not be modified
-        // and with StringBuilder I can easily modify it without creating a new object
+        // and with StringBuilder I can easily modify it without creating a new object each modify
         StringBuilder compressed = new StringBuilder();
 
         // Creating a variable to count repeating characters
@@ -29,13 +29,13 @@ public class Main {
                 count++;
             }
             else{
-                // If the character is not repeating itself,
-                // the program adds the character with it's repeating number
-                // to the end of compressed string which will be returned as result
+                // If the character is no longer repeating itself
+                // the program adds the character with it's repeat count
+                // to the end of compressed string which will be returned
                 compressed.append(string.charAt(i-1));
                 compressed.append(count);
 
-                count=1; // counter resets to 1 to count other character's repeats
+                count=1; // counter resets to 1 for the new characte
             }
         }
 
@@ -54,7 +54,7 @@ public class Main {
 
         // If the input string is empty
         // the method returns an empty string
-        if(compressed.isEmpty()){
+        if(compressed.isEmpty() || compressed == null){
             return "";
         }
 
@@ -102,12 +102,12 @@ public class Main {
         //code for testing both methods
         System.out.println();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your string you want to compress: ");
+        System.out.println("Enter the string you want to compress: ");
         String string = sc.nextLine();
         System.out.println(string+" → "+compressString(string));
 
         System.out.println();
-        System.out.println("Enter your string you want to decompress: ");
+        System.out.println("Enter the string you want to decompress: ");
         String compressedString = sc.nextLine();
         System.out.println(compressedString+" → "+decompressString(compressedString));
 
